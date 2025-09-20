@@ -415,7 +415,7 @@ function Tendou() {
       clear_message();
       self._show_wait_indicator();
 
-      window.provide_secret();
+      window.provide_secret(); // redo this 
     });
 
     /* Tell LightDM to shut down when the shutdown button is clicked. */
