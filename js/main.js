@@ -61,7 +61,7 @@ function Tendou() {
        */
       window.provide_secret = function() {
         // Pass the user-entered password to LightDM
-        lightdm.provide_secret(PrivateProp.el_input_pass.value);
+        lightdm.respond(PrivateProp.el_input_pass.value);
       };
 
       /**
