@@ -52,16 +52,24 @@ function Tendou() {
        * @param The username of the user to start authenticating.
        */
       window.start_authentication = function(username) {
-        lightdm.cancel_timed_login(); // Cancel any previous login attempt
-        lightdm.start_authentication(username);
+        lightdm.cancel_authentication(); // Cancel any previous login attempt
+        lightdm.authenticate(username);
+        wait(100);
+
       };
 
       /**
        * Provide the user-entered password to LightDM.
        */
       window.provide_secret = function() {
+        //this carries out the remainder of authentication together with the code above.
+        // Instead we should clean up the code by 
+        //eliminating deprecated, removed APIs. 
         // Pass the user-entered password to LightDM
         lightdm.respond(PrivateProp.el_input_pass.value);
+        //the session name should be a variable and not hardcoded
+        lightdm.start_session("cinnamon");
+        
       };
 
       /**
