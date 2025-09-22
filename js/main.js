@@ -415,7 +415,16 @@ function Tendou() {
       clear_message();
       self._show_wait_indicator();
 
-      window.provide_secret(); // redo this 
+      //window.provide_secret(); // expand this into entire auth flow 
+
+      //this should be a function
+      lightdm.cancel_authentication(); //cancel other authentication attempts
+      lightdm.authenticate(lightdm.users[user_index].username); //find username
+      wait(100); //give it time to process authentication otherwise login fails
+      lightdm.respond(data.password);  //provide password
+      lightdm.start_session("ubuntu");
+
+
     });
 
     /* Tell LightDM to shut down when the shutdown button is clicked. */
